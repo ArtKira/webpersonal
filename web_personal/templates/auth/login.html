@@ -5,3 +5,23 @@
 {%block header_title %}Autenticacion{%endblock%}
 {%block header_sub %}Lgin{%endblock%}
 
+{%block content%}
+<div class="container">
+    <h2>Login form</h2>
+    <form class="mt-3">
+        <div class="mb-3">
+          <label for="email" class="form-label">Correo</label>
+          <input type="email" class="form-control" id="mail" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+
+{%endblock%}
+
+

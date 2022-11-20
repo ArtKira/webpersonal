@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 ########rutas public ########
@@ -42,7 +42,12 @@ def login():
 def register():
     return render_template('/auth/register.html')
 
-
+@app.route('/welcom')
+def welcom():#obtenemos los datos del from con un request obtenemos el emial y password redirigimos a index
+    email = request.args.get('mail')
+    password = request.args.get('password')
+    acess={'email':email, 'password':password}
+    return render_template('admin/index.html', user_access=acess)
 
 if __name__=='__main__':
     app.run(debug=True)

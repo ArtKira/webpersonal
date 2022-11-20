@@ -8,7 +8,7 @@
 {%block content%}
 <div class="container">
     <h2>Login form</h2>
-    <form class="mt-3" action="{{ url_for('welcom')}}">
+    <form class="mt-3" action="{{ url_for('welcom')}}" method="post">
         <div class="mb-3">
           <label for="email" class="form-label">Correo</label>
           <input type="email" class="form-control" id="mail" aria-describedby="emailHelp" name="mail">
@@ -19,6 +19,7 @@
           <input type="password" class="form-control" id="password" name="password">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="{{url_for('register')}}" class="btn btn-secondary">Registrar</a>
       </form>
 </div>
 

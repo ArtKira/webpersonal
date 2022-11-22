@@ -4,3 +4,35 @@
 
 {%block header_title %}Autenticacion{%endblock%}
 {%block header_sub %}Register{%endblock%}
+
+{%block content %}
+<div class="container">
+<h2>Formulario de registro</h2>
+<form action="">
+    <div class="mb-3">
+        <label for="email" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="name" name="name">
+      </div>
+      <div class="mb-3">
+        <label for="lastname" class="form-label">Apellido</label>
+        <input type="text" class="form-control" id="lastname" name="lastname">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Correo</label>
+        <input type="email" class="form-control" id="email" name="email">
+      </div>
+      <div class="mb-3">
+        <label for="pass" class="form-label">password</label>
+        <input type="password" class="form-control" id="password" name="password">
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Telefono</label>
+        <input type="number" class="form-control" id="phone" name="phone">
+      </div>
+      <button type="submit" class="btn btn-success">Registrar</button>
+      <a type="button" class="btn btn-danger" href="{{url_for('login')}}">Login</a>
+
+</form>
+</div>
+
+{%endblock%}

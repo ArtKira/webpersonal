@@ -49,6 +49,10 @@ def welcom():#obtenemos los datos del from con un request obtenemos el emial y p
     acess={'email':email}
     return render_template('admin/index.html', user_access=acess)
 
+@app.errorhandler(404)
+def page_error_not_found(e):
+    return render_template('errores/404.html'), 404
+
 if __name__=='__main__':
     app.run(debug=True)
 

@@ -1,6 +1,9 @@
+from crypt import methods
 from flask import Flask, render_template, request
-
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField
 app = Flask(__name__)
+app.config['SECRET_KEY']='secret'
 ########rutas public ########
 @app.route('/')
 def index():
@@ -32,6 +35,11 @@ def portfolio():
     ]
     return render_template('public/portfolio.html', projects=projects)
 
+################FORMULARIOS DE WTFORMS########################
+class loginForm(FlaskForm):
+    username=StringField('Username')
+    password=PasswordField('Password')
+    submit=SubmitField('Login')
 
 ######### Auth ###########
 @app.route('/auth/login')
@@ -42,11 +50,11 @@ def login():
 def register():
     return render_template('/auth/register.html')
 
-@app.route('/welcom', methods=['GET', 'POST'])
-def welcom():#obtenemos los datos del from con un request obtenemos el emial y password redirigimos a index
-    email = request.form('mail')
-    password = request.form('password')
-    acess={'email':email}
+@app.route('/welcome', methods=['GET', 'POST'])
+def welcome():#obtenemos los datos del from con un request obtenemos el emial y password redirigimos a index
+    email = request.form['mail']
+    password = request.form['password']
+    acess={'email':email, 'password':password}
     return render_template('admin/index.html', user_access=acess)
 
 @app.errorhandler(404)

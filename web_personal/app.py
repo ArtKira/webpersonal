@@ -42,6 +42,7 @@ def login():
 def register():
     return render_template('/auth/register.html')
 
+    
 @app.route('/welcom', methods=['GET', 'POST'])
 def welcom():#obtenemos los datos del from con un request obtenemos el emial y password redirigimos a index
     email = request.form('mail')

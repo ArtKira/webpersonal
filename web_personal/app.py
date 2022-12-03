@@ -3,39 +3,11 @@ from flask import Flask, redirect, render_template, request, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, EmailField, IntegerField, RadioField, SelectField
 from wtforms.validators import DataRequired, Email
+from home.views import home_blueprint
 
 app = Flask(__name__)
 app.config['SECRET_KEY']='secret'
-########rutas public ########
-@app.route('/')
-def index():
-    return render_template('public/index.html')
 
-@app.route('/about')
-def about():
-    return render_template('public/about.html')
-
-@app.route('/contact')
-def contact():
-    return render_template('public/contact.html')
-
-@app.route('/portfolio')
-def portfolio():
-    projects=[#creamos el direccionario para el portafolio son sus caracteristicas 
-        {
-            'name':'Primer proyecto',
-            'description':'As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm....',
-            'image':'img/home-bg.jpg',
-            'url':'http://google.com'
-        },
-        {
-            'name':'Segundo proyecto',
-            'description':'As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm....',
-            'image':'img/about-bg.jpg',
-            'url':'http://google.com'
-        }
-    ]
-    return render_template('public/portfolio.html', projects=projects)
 
 ################FORMULARIOS DE WTFORMS########################
 class loginForm(FlaskForm):
@@ -78,10 +50,14 @@ def register():
  #       return render_template('admin/index.html', email=email)
   #  
    # return redirect(url_for('login'))
+##APPS###
+
 
 @app.errorhandler(404)
 def page_error_not_found(e):
     return render_template('errores/404.html'), 404
+
+app.register_blueprint(home_blueprint)
 
 if __name__=='__main__':
     app.run(debug=True)

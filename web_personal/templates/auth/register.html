@@ -4,3 +4,47 @@
 
 {%block header_title %}Autenticacion{%endblock%}
 {%block header_sub %}Register{%endblock%}
+
+{%block content %}
+<div class="container">
+<h2>Formulario de registro</h2>
+<form method="post">
+  {{form.hidden_tag()}}
+    <div class="mb-3">
+      {{form.name.label}}
+      {{form.name (class="form-control")}}
+      </div>
+      <div class="mb-3">
+        {{form.last_name.label}}
+        {{form.last_name (class="form-control")}}
+      </div>
+      <div class="mb-3">
+        {{form.email.label}}
+        {{form.email (class="form-control")}}
+      </div>
+      <div class="mb-3">
+        {{form.password.label}}
+        {{form.password (class="form-control")}}
+      </div>
+      <div class="mb-3">
+        {{form.phone.label}}
+        {{form.phone (class="form-control")}}
+      </div>
+      <div>
+          {{form.is_married.label}}
+          {{form.is_married}}
+      </div>
+
+      {{form.gander.label}}
+      <select class="form-select" aria-label="Default select example">
+      {{form.gander (class="custom-select")}}
+      </select>
+
+
+      {{form.submit (class="btn btn-success")}}
+      <a type="button" class="btn btn-danger" href="{{url_for('login')}}">Login</a>
+
+</form>
+</div>
+
+{%endblock%}
